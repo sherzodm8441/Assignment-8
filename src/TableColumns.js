@@ -13,7 +13,7 @@ class TableColumn extends React.Component{
     render(){
         return(
             <div className="column">
-                <TableCell />
+                <TableCell color={this.props.color}/>
             </div>
         )
     }

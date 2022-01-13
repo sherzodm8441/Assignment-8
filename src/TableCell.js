@@ -9,10 +9,11 @@ class TableCell extends React.Component{
         
     }
 
+    
 
     render(){
         return(
-            <div className="cell">
+            <div style={{backgroundColor : this.props.color}} className="cell">
                 
             </div>
         )

@@ -6,6 +6,7 @@ class Table extends React.Component{
     constructor(props){
         super(props)
 
+
         
     }
 
@@ -13,7 +14,7 @@ class Table extends React.Component{
     render(){
         return(
             <div className="table-table">
-                <TableColumn />
+                <TableColumn color={this.props.color}/>
                 
             </div>
         )
