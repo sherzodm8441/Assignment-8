@@ -1,0 +1,21 @@
+.cell{
+    width: 30px;
+  height: 30px;
+  margin: 2px;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  border: 3px solid black;
+  transition: background 0.2s ease-in-out;
+
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.table-table{
+    display: flex;
+    flex-direction: row;
+}
