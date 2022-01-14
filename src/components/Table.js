@@ -1,5 +1,6 @@
 import React from "react"
 import TableColumn from "./TableColumns.js"
+import "../style.css";
 
 class Table extends React.Component{
 
