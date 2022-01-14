@@ -7,13 +7,21 @@ class App extends React.Component {
     super(props)
     
     this.state = {
-      color : "transparent"
+      color : "transparent",
+      row : 1,
+      column : 1
     }
   }
 
   getColor = (event)=>{
     this.setState({color : event.target.value})
-    console.log(this.state.color)
+  }
+
+  updateRow = (val) => {
+    this.setState({row : this.state.row + val})
+  }
+  updateColumn = (val) => {
+    this.setState({column : this.state.column + val})
   }
   
 
@@ -21,7 +29,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <label>Pick Color <input type="color" value={this.state.color} onChange={this.getColor}/></label>
-        <Table color={this.state.color}/>
+        <label>Row<button onClick={()=>this.updateRow(-1)}>-</button></label>
+        <button onClick={()=>this.updateRow(1)}>+</button>
+        <label>Column<button onClick={()=>this.updateColumn(-1)}>-</button></label>
+        <button onClick={()=>this.updateColumn(1)}>+</button>
+        <Table 
+          color={this.state.color}
+          row={this.state.row}
+          column={this.state.column}
+        />
 
       </div>
     );
