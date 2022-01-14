@@ -1,27 +1,27 @@
-import React from "react"
-import "./style.css"
+import React from "react";
+import "./style.css";
 
-class TableCell extends React.Component{
+class TableCell extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props){
-        super(props)
+    this.state = {
+      color: "",
+    };
+  }
 
-        this.state = {
-            color : ""
-        }
-    }
+  cellClick = () => {
+    this.setState({ color: this.props.color });
+  };
 
-    cellClick = () => {
-        this.setState({color : this.props.color})
-    }
-
-    render(){
-        return(
-            <div style={{backgroundColor : this.state.color}} className="cell" onClick={()=> this.cellClick()}>
-                
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div
+        style={{ backgroundColor: this.state.color }}
+        className="cell"
+        onClick={() => this.cellClick()}></div>
+    );
+  }
 }
 
-export default TableCell
+export default TableCell;
