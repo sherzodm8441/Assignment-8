@@ -9,11 +9,21 @@ class TableColumn extends React.Component{
         
     }
 
+    rows = () =>{
+        const row = []
+        for(let i = 0; i  < this.props.row; i++){
+            row.push(<TableCell color={this.props.color} changeColor={this.props.changeColor}/>)
+        }
+        return row
+    }
+    
+
 
     render(){
         return(
             <div className="column">
-                <TableCell color={this.props.color}/>
+                {/* <TableCell color={this.props.color}/> */}
+                {this.rows()}
             </div>
         )
     }

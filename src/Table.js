@@ -10,12 +10,21 @@ class Table extends React.Component{
         
     }
 
+    columns = () =>{
+        const col = []
+        for(let i = 0; i  < this.props.column; i++){
+            col.push(<TableColumn 
+                color={this.props.color}
+                row={this.props.row}
+            />)
+        }
+        return col
+    }
 
     render(){
         return(
             <div className="table-table">
-                <TableColumn color={this.props.color}/>
-                
+                {this.columns()}
             </div>
         )
     }
