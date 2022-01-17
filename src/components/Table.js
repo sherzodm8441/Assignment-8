@@ -17,6 +17,7 @@ class Table extends React.Component{
             col.push(<TableColumn 
                 color={this.props.color}
                 row={this.props.row}
+                changeCellColor={this.props.changeCellColor}
             />)
         }
         return col

@@ -11,6 +11,7 @@ class App extends React.Component {
       row: 1,
       column: 1,
     };
+
   }
 
   getColor = (event) => {
@@ -26,6 +27,10 @@ class App extends React.Component {
     if (this.state.column + val > 0) {
       this.setState({ column: this.state.column + val });
     }
+  };
+
+  changeCellColor = (event) => {
+    event.target.style.backgroundColor = this.state.color;
   };
 
   render() {
@@ -46,7 +51,7 @@ class App extends React.Component {
           color={this.state.color}
           row={this.state.row}
           column={this.state.column}
-          changeColor={this.setColor}
+          changeCellColor={this.changeCellColor}
         />
       </div>
     );
