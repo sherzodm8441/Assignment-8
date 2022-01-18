@@ -11,9 +11,6 @@ export default class App extends React.Component {
       color: "#000000", // default black
       row: 1,
       column: 1,
-      fillAll: false,
-      unfill: false,
-      fillUncolored: false,
       hover: false,
     };
 
@@ -119,12 +116,8 @@ export default class App extends React.Component {
         />
 
         <Table
-          color={this.state.color}
           row={this.state.row}
           column={this.state.column}
-          fillAll={this.state.fillAll}
-          unfill={this.state.unfill}
-          fillUncolored={this.state.fillUncolored}
           hover={this.state.hover}
           handleColorOnHover={this.colorOnHover}
           handleRemoveHover={this.removeHover}

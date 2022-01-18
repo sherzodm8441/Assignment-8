@@ -8,7 +8,6 @@ export default class Table extends Component {
       col.push(
         <TableColumn
           key={`column${i + 1}`}
-          color={this.props.color}
           row={this.props.row}
           hover={this.props.hover}
           handleColorOnHover={this.props.handleColorOnHover}
