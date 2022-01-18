@@ -10,6 +10,7 @@ class TableColumn extends React.Component{
         
     }
 
+    // adds rows to a column
     rows = () =>{
         const row = []
         for(let i = 0; i  < this.props.row; i++){
