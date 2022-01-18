@@ -13,8 +13,10 @@ class TableColumn extends React.Component{
     rows = () =>{
         const row = []
         for(let i = 0; i  < this.props.row; i++){
-            row.push(<TableCell color={this.props.color} 
+            row.push(<TableCell 
+                color={this.props.color} 
                 changeCellColor={this.props.changeCellColor}
+                backColor={this.props.backColor}
             />)
         }
         return row
