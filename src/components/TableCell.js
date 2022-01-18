@@ -14,7 +14,11 @@ class TableCell extends React.Component {
     return (
       <div
         className="cell"
-        onClick={this.props.changeCellColor}></div>
+        onClick={this.props.changeCellColor}
+        onMouseDown={this.props.hoverSetTrue}
+        onMouseOver={this.props.hoverChangeColor}
+        onMouseUp={this.props.hoverSetFalse}
+        ></div>
     );
   }
 }

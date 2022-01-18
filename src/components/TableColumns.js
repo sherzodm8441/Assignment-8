@@ -16,6 +16,9 @@ class TableColumn extends React.Component{
             row.push(<TableCell 
                 color={this.props.color} 
                 changeCellColor={this.props.changeCellColor}
+                hoverSetTrue={this.props.hoverSetTrue}
+                hoverSetFalse={this.props.hoverSetFalse}
+                hoverChangeColor={this.props.hoverChangeColor}
             />)
         }
         return row

@@ -1,3 +1,7 @@
+body{
+    user-select: none;
+}
+
 .cell{
     width: 30px;
   height: 30px;
