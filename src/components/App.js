@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header.js";
 import Table from "./Table.js";
 import "../style.css";
 
@@ -7,46 +8,94 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      color: "transparent",
+      color: "",
       row: 1,
       column: 1,
+      fillAll: false,
+      unfill: false,
+      fillUncolored: false,
     };
+
+    this.updateColor = this.updateColor.bind(this);
+    this.addRow = this.addRow.bind(this);
+    this.addColumn = this.addColumn.bind(this);
+    this.deleteRow = this.deleteRow.bind(this);
+    this.deleteColumn = this.deleteColumn.bind(this);
+    this.fillAllCells = this.fillAllCells.bind(this);
+    this.unfillAllCells = this.unfillAllCells.bind(this);
+    this.fillUncoloredCells = this.fillUncoloredCells.bind(this);
   }
 
-  getColor = (event) => {
+  updateColor(event) {
     this.setState({ color: event.target.value });
-  };
+  }
 
-  updateRow = (val) => {
-    if (this.state.row + val > 0) {
-      this.setState({ row: this.state.row + val });
+  fillUncoloredCells() {
+    this.setState((prevState) => ({ fillUncolored: !prevState.fillUncolored }));
+  }
+
+  fillAllCells() {
+    this.setState((prevState) => ({ fillAll: !prevState.fillAll }));
+  }
+
+  unfillAllCells() {
+    this.setState((prevState) => ({ unfill: !prevState.unfill }));
+  }
+
+  addRow() {
+    if (this.state.column === 0) {
+      this.setState((prevState) => ({ row: prevState.row + 1, column: 1 }));
+    } else {
+      this.setState((prevState) => ({ row: prevState.row + 1 }));
     }
-  };
-  updateColumn = (val) => {
-    if (this.state.column + val > 0) {
-      this.setState({ column: this.state.column + val });
+  }
+
+  addColumn() {
+    if (this.state.row === 0) {
+      this.setState((prevState) => ({ row: 1, column: prevState.column + 1 }));
+    } else {
+      this.setState((prevState) => ({ column: prevState.column + 1 }));
     }
-  };
+  }
+
+  deleteRow() {
+    if (this.state.row === 1) {
+      console.log("here");
+      this.setState((prevState) => ({ row: 0, column: 0 }));
+    } else if (this.state.row > 0) {
+      this.setState((prevState) => ({ row: prevState.row - 1 }));
+    }
+  }
+
+  deleteColumn() {
+    if (this.state.column === 1) {
+      this.setState((prevState) => ({ row: 0, column: 0 }));
+    } else if (this.state.column > 1) {
+      this.setState((prevState) => ({ column: prevState.column - 1 }));
+    }
+  }
 
   render() {
     return (
       <div className="App">
-        <label>
-          Pick Color <input type="color" value={this.state.color} onChange={this.getColor} />
-        </label>
-        <label>
-          Row<button onClick={() => this.updateRow(-1)}>-</button>
-        </label>
-        <button onClick={() => this.updateRow(1)}>+</button>
-        <label>
-          Column<button onClick={() => this.updateColumn(-1)}>-</button>
-        </label>
-        <button onClick={() => this.updateColumn(1)}>+</button>
+        <Header
+          color={this.state.color}
+          changeColor={this.updateColor}
+          addRow={this.addRow}
+          deleteRow={this.deleteRow}
+          addColumn={this.addColumn}
+          deleteColumn={this.deleteColumn}
+          fillOnClick={this.fillAllCells}
+          unfillOnClick={this.unfillAllCells}
+          fillUncolored={this.fillUncoloredCells}
+        />
         <Table
           color={this.state.color}
           row={this.state.row}
           column={this.state.column}
-          changeColor={this.setColor}
+          fillAll={this.state.fillAll}
+          unfill={this.state.unfill}
+          fillUncolored={this.state.fillUncolored}
         />
       </div>
     );
