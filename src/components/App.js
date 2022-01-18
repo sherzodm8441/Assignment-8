@@ -10,6 +10,7 @@ class App extends React.Component {
       color: "transparent",
       row: 1,
       column: 1,
+      backColor : ""
     };
 
   }
@@ -31,7 +32,12 @@ class App extends React.Component {
 
   changeCellColor = (event) => {
     event.target.style.backgroundColor = this.state.color;
+    this.setState({backColor : ""})
   };
+
+  clearCells = () => {
+    this.setState({backColor : "#00000000"})
+  }
 
   render() {
     return (
@@ -47,11 +53,15 @@ class App extends React.Component {
           Column<button onClick={() => this.updateColumn(-1)}>-</button>
         </label>
         <button onClick={() => this.updateColumn(1)}>+</button>
+      
+          <button onClick={() => this.clearCells()}>Clear All Cells</button>
+      
         <Table
           color={this.state.color}
           row={this.state.row}
           column={this.state.column}
           changeCellColor={this.changeCellColor}
+          backColor={this.state.backColor}
         />
       </div>
     );
