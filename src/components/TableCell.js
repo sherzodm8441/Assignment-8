@@ -20,7 +20,7 @@ class TableCell extends React.Component {
     }
 
     if (prevProps.fillUncolored !== this.props.fillUncolored) {
-      if (this.state.color === "") {
+      if (this.state.color === "white") {
         this.setState((prevProps) => ({ color: this.props.color }));
       }
     }
