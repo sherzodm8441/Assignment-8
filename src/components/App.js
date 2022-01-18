@@ -8,12 +8,13 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      color: "",
+      color: "#000000",
       row: 1,
       column: 1,
       fillAll: false,
       unfill: false,
       fillUncolored: false,
+      hover: false,
     };
 
     this.updateColor = this.updateColor.bind(this);
@@ -24,6 +25,16 @@ class App extends React.Component {
     this.fillAllCells = this.fillAllCells.bind(this);
     this.unfillAllCells = this.unfillAllCells.bind(this);
     this.fillUncoloredCells = this.fillUncoloredCells.bind(this);
+    this.colorOnHover = this.colorOnHover.bind(this);
+    this.removeHover = this.removeHover.bind(this);
+  }
+
+  colorOnHover() {
+    this.setState((prevState) => ({ hover: true }));
+  }
+
+  removeHover() {
+    this.setState((prevState) => ({ hover: false }));
   }
 
   updateColor(event) {
@@ -60,7 +71,6 @@ class App extends React.Component {
 
   deleteRow() {
     if (this.state.row === 1) {
-      console.log("here");
       this.setState((prevState) => ({ row: 0, column: 0 }));
     } else if (this.state.row > 0) {
       this.setState((prevState) => ({ row: prevState.row - 1 }));
@@ -96,6 +106,9 @@ class App extends React.Component {
           fillAll={this.state.fillAll}
           unfill={this.state.unfill}
           fillUncolored={this.state.fillUncolored}
+          hover={this.state.hover}
+          handleColorOnHover={this.colorOnHover}
+          handleRemoveHover={this.removeHover}
         />
       </div>
     );

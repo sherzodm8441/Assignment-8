@@ -2,10 +2,6 @@ import React from "react";
 import TableCell from "./TableCell.js";
 
 class TableColumn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   rows = () => {
     const row = [];
     for (let i = 0; i < this.props.row; i++) {
@@ -16,6 +12,9 @@ class TableColumn extends React.Component {
           fillAll={this.props.fillAll}
           unfill={this.props.unfill}
           fillUncolored={this.props.fillUncolored}
+          hover={this.props.hover}
+          handleColorOnHover={this.props.handleColorOnHover}
+          handleRemoveHover={this.props.handleRemoveHover}
         />
       );
     }

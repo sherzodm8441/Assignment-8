@@ -2,10 +2,6 @@ import React from "react";
 import TableColumn from "./TableColumns.js";
 
 class Table extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   columns = () => {
     const col = [];
     for (let i = 0; i < this.props.column; i++) {
@@ -16,6 +12,9 @@ class Table extends React.Component {
           fillAll={this.props.fillAll}
           unfill={this.props.unfill}
           fillUncolored={this.props.fillUncolored}
+          hover={this.props.hover}
+          handleColorOnHover={this.props.handleColorOnHover}
+          handleRemoveHover={this.props.handleRemoveHover}
         />
       );
     }

@@ -7,6 +7,16 @@
   font-weight: bold;
 }
 
+/* remove text highlighting when mouse dragged */
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .user-inputs {
   background-color: orange;
   padding: 1rem;
