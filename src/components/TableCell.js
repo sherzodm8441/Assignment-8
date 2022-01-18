@@ -13,7 +13,6 @@ class TableCell extends React.Component {
   render() {
     return (
       <div
-        style={{backgroundColor: this.props.backColor}}
         className="cell"
         onClick={this.props.changeCellColor}></div>
     );

@@ -18,7 +18,6 @@ class Table extends React.Component{
                 color={this.props.color}
                 row={this.props.row}
                 changeCellColor={this.props.changeCellColor}
-                backColor={this.props.backColor}
             />)
         }
         return col
