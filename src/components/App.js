@@ -7,11 +7,15 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      color: "#00000000",
+      color: "",
       row: 1,
-      column: 1
+      column: 1, 
+      hover: false
     };
-
+    this.changeCellColor = this.changeCellColor.bind(this)
+    this.hoverSetTrue = this.hoverSetTrue.bind(this)
+    this.hoverSetFalse = this.hoverSetFalse.bind(this)
+    this.hoverChangeColor = this.hoverChangeColor.bind(this)
   }
 
   getColor = (event) => {
@@ -56,6 +60,22 @@ class App extends React.Component {
     }
   }
 
+  hoverSetTrue(){
+    this.setState({hover : true})
+    console.log(this.state.hover)
+  }
+  hoverSetFalse(){
+    this.setState({hover : false})
+    console.log(this.state.hover)
+  }
+  hoverChangeColor(event){
+    console.log(this.state.hover)
+    if(this.state.hover){
+      this.changeCellColor(event)
+      //event.target.style.backgroundColor = this.state.color;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -79,6 +99,9 @@ class App extends React.Component {
           row={this.state.row}
           column={this.state.column}
           changeCellColor={this.changeCellColor}
+          hoverSetTrue={this.hoverSetTrue}
+          hoverSetFalse={this.hoverSetFalse}
+          hoverChangeColor={this.hoverChangeColor}
         />
       </div>
     );
