@@ -7,10 +7,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      color: "transparent",
+      color: "#00000000",
       row: 1,
-      column: 1,
-      backColor : ""
+      column: 1
     };
 
   }
@@ -36,7 +35,11 @@ class App extends React.Component {
   };
 
   clearCells = () => {
-    this.setState({backColor : "#00000000"})
+    //this.setState({backColor : "#00000000"})
+    const cells = document.querySelectorAll(".cell")
+    for(let cell of cells){
+      cell.style.backgroundColor = "#00000000"
+    }
   }
 
   render() {
@@ -61,7 +64,6 @@ class App extends React.Component {
           row={this.state.row}
           column={this.state.column}
           changeCellColor={this.changeCellColor}
-          backColor={this.state.backColor}
         />
       </div>
     );
