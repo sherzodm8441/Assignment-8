@@ -48,7 +48,6 @@ export default class TableCell extends Component {
   render() {
     return (
       <div
-        style={{ backgroundColor: this.state.color }}
         className="cell"
         onMouseDown={this.colorOnClick}
         onMouseOver={this.cellColor}

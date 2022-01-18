@@ -94,6 +94,18 @@ export default class App extends React.Component {
     this.setState({ hover: false });
   }
 
+  changeCellColor = (event) => {
+    event.target.style.backgroundColor = this.state.color;
+  };
+
+  clearCells = () => {
+    //this.setState({backColor : "#00000000"})
+    const cells = document.querySelectorAll(".cell");
+    for (let cell of cells) {
+      cell.style.backgroundColor = "#00000000";
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -108,6 +120,7 @@ export default class App extends React.Component {
           unfillOnClick={this.unfillAllCells}
           fillUncolored={this.fillUncoloredCells}
         />
+
         <Table
           color={this.state.color}
           row={this.state.row}
@@ -118,9 +131,9 @@ export default class App extends React.Component {
           hover={this.state.hover}
           handleColorOnHover={this.colorOnHover}
           handleRemoveHover={this.removeHover}
+          changeCellColor={this.changeCellColor}
         />
       </div>
     );
   }
 }
-
