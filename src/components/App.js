@@ -31,14 +31,28 @@ class App extends React.Component {
 
   changeCellColor = (event) => {
     event.target.style.backgroundColor = this.state.color;
-    this.setState({backColor : ""})
   };
 
   clearCells = () => {
-    //this.setState({backColor : "#00000000"})
     const cells = document.querySelectorAll(".cell")
     for(let cell of cells){
-      cell.style.backgroundColor = "#00000000"
+      cell.style.backgroundColor = ""
+    }
+  }
+
+  fillAllCells = () => {
+    const cells = document.querySelectorAll(".cell")
+    for(let cell of cells){
+      cell.style.backgroundColor = this.state.color
+    }
+  }
+  fillUncoloredCells = () => {
+    
+    const cells = document.querySelectorAll(".cell")
+    for(let cell of cells){
+      if(cell.style.backgroundColor === ""){
+        cell.style.backgroundColor = this.state.color
+      }
     }
   }
 
@@ -56,8 +70,9 @@ class App extends React.Component {
           Column<button onClick={() => this.updateColumn(-1)}>-</button>
         </label>
         <button onClick={() => this.updateColumn(1)}>+</button>
-      
-          <button onClick={() => this.clearCells()}>Clear All Cells</button>
+        <button onClick={() => this.clearCells()}>Clear All</button>
+        <button onClick={() => this.fillAllCells()}>Fill All</button>
+        <button onClick={() => this.fillUncoloredCells()}>Fill Uncolored</button>
       
         <Table
           color={this.state.color}
