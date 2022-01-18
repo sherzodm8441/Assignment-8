@@ -1,40 +1,49 @@
-import React from "react";
+import React, { Component } from "react";
 
-class TableCell extends React.Component {
+export default class TableCell extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       color: "#ffffff", // white by default
     };
+
+    this.cellColor = this.cellColor.bind(this);
+    this.colorOnClick = this.colorOnClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
+    // USER STORY #8 - fill all cells to selected color
     if (prevProps.fillAll !== this.props.fillAll) {
-      this.setState((prevProps) => ({ color: this.props.color }));
+      this.setState({ color: this.props.color });
     }
 
+    // USER STORY #9 - unfill all cells - default color white
     if (prevProps.unfill !== this.props.unfill) {
-      this.setState((prevProps) => ({ color: "#ffffff" }));
+      this.setState({ color: "#ffffff" });
     }
 
+    // USER STORY #7 - fill uncolored cells to selected color
     if (prevProps.fillUncolored !== this.props.fillUncolored) {
+      // change cell color only if currently white
       if (this.state.color === "#ffffff") {
-        this.setState((prevProps) => ({ color: this.props.color }));
+        this.setState({ color: this.props.color });
       }
     }
   }
 
-  cellColor = () => {
+  // USER STORY #10 - change grid cell color on mouse click and drag
+  cellColor() {
     if (this.props.hover) {
-      this.setState((prevState) => ({ color: this.props.color }));
+      this.setState({ color: this.props.color });
     }
-  };
+  }
 
-  colorOnClick = () => {
+  // USER STORY #6 - change grid cell color on click
+  colorOnClick() {
     this.props.handleColorOnHover();
-    this.setState((prevState) => ({ color: this.props.color }));
-  };
+    this.setState({ color: this.props.color });
+  }
 
   render() {
     return (
@@ -47,5 +56,3 @@ class TableCell extends React.Component {
     );
   }
 }
-
-export default TableCell;

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import TableColumn from "./TableColumns.js";
 
-class Table extends React.Component {
+export default class Table extends Component {
   columns = () => {
     const col = [];
     for (let i = 0; i < this.props.column; i++) {
       col.push(
         <TableColumn
+          key={`column${i + 1}`}
           color={this.props.color}
           row={this.props.row}
           fillAll={this.props.fillAll}
@@ -25,5 +26,3 @@ class Table extends React.Component {
     return <div className="table-table">{this.columns()}</div>;
   }
 }
-
-export default Table;
