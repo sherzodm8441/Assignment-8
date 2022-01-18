@@ -9,13 +9,10 @@ export default class TableColumn extends Component {
         <TableCell
           key={`row${i + 1}`}
           color={this.props.color}
-          changeColor={this.props.changeColor}
-          fillAll={this.props.fillAll}
-          unfill={this.props.unfill}
-          fillUncolored={this.props.fillUncolored}
           hover={this.props.hover}
           handleColorOnHover={this.props.handleColorOnHover}
           handleRemoveHover={this.props.handleRemoveHover}
+          changeCellColor={this.props.changeCellColor}
         />
       );
     }

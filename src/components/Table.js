@@ -10,12 +10,10 @@ export default class Table extends Component {
           key={`column${i + 1}`}
           color={this.props.color}
           row={this.props.row}
-          fillAll={this.props.fillAll}
-          unfill={this.props.unfill}
-          fillUncolored={this.props.fillUncolored}
           hover={this.props.hover}
           handleColorOnHover={this.props.handleColorOnHover}
           handleRemoveHover={this.props.handleRemoveHover}
+          changeCellColor={this.props.changeCellColor}
         />
       );
     }

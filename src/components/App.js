@@ -22,9 +22,9 @@ export default class App extends React.Component {
     this.addColumn = this.addColumn.bind(this);
     this.deleteRow = this.deleteRow.bind(this);
     this.deleteColumn = this.deleteColumn.bind(this);
-    this.fillAllCells = this.fillAllCells.bind(this);
-    this.unfillAllCells = this.unfillAllCells.bind(this);
-    this.fillUncoloredCells = this.fillUncoloredCells.bind(this);
+    this.changeCellColor = this.changeCellColor.bind(this);
+    this.clearCells = this.clearCells.bind(this);
+    this.fillUncolored = this.fillUncolored.bind(this);
     this.colorOnHover = this.colorOnHover.bind(this);
     this.removeHover = this.removeHover.bind(this);
   }
@@ -70,19 +70,28 @@ export default class App extends React.Component {
     this.setState({ color: event.target.value });
   }
 
+  // USER STORY #6 - change grid cell color on click
+  changeCellColor(event) {
+    event.target.style.backgroundColor = this.state.color;
+  }
+
   // USER STORY #7 - fill uncolored cells with selected color
-  fillUncoloredCells() {
-    this.setState((prevState) => ({ fillUncolored: !prevState.fillUncolored }));
+  fillUncolored() {
+    const cells = document.getElementsByClassName("cell");
+    for (const cell of cells) {
+      if (cell.style.backgroundColor === "") {
+        cell.style.backgroundColor = this.state.color;
+      }
+    }
   }
 
   // USER STORY #8 - fill all cells with selected color
-  fillAllCells() {
-    this.setState((prevState) => ({ fillAll: !prevState.fillAll }));
-  }
-
   // USER STORY #9 - unfill all cells
-  unfillAllCells() {
-    this.setState((prevState) => ({ unfill: !prevState.unfill }));
+  clearCells(color) {
+    const cells = document.querySelectorAll(".cell");
+    for (let cell of cells) {
+      cell.style.backgroundColor = color;
+    }
   }
 
   // USER STORY #10 - events to handle mouse drag and hover state
@@ -94,18 +103,6 @@ export default class App extends React.Component {
     this.setState({ hover: false });
   }
 
-  changeCellColor = (event) => {
-    event.target.style.backgroundColor = this.state.color;
-  };
-
-  clearCells = () => {
-    //this.setState({backColor : "#00000000"})
-    const cells = document.querySelectorAll(".cell");
-    for (let cell of cells) {
-      cell.style.backgroundColor = "#00000000";
-    }
-  };
-
   render() {
     return (
       <div className="App">
@@ -116,9 +113,9 @@ export default class App extends React.Component {
           deleteRow={this.deleteRow}
           addColumn={this.addColumn}
           deleteColumn={this.deleteColumn}
-          fillOnClick={this.fillAllCells}
-          unfillOnClick={this.unfillAllCells}
-          fillUncolored={this.fillUncoloredCells}
+          fillUncolored={this.fillUncolored}
+          fillOnClick={() => this.clearCells(this.state.color)}
+          unfillOnClick={() => this.clearCells("")}
         />
 
         <Table
