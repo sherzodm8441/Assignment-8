@@ -11,6 +11,7 @@ class Table extends React.Component{
         
     }
 
+    // adds columns to table
     columns = () =>{
         const col = []
         for(let i = 0; i  < this.props.column; i++){
